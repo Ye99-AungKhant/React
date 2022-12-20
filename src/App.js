@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-class Item extends React.Component {
+class Items extends React.Component{
   render() {
     return (
        <li>
@@ -11,14 +11,43 @@ class Item extends React.Component {
 }
 
 class App extends React.Component {
+ state = {
+  items:[
+    
+  ]
+ }
+
+ add = () => {
+  let id = this.state.items.length
+  if(id === 0){
+    id +=1
+  }else{
+    id = this.state.items.length + 1
+  }
+
+  this.setState({
+    items:[
+      ...this.state.items,
+      {id, name:`Fruid ${id}`, price:0.1 * id}
+    ]
+  })
+ }
+
   render() {
     return (
        <div>
         <h1>Hello React</h1>
-        <Item name="Apple" price="2"/>
+        <button onClick={this.add}>ADD</button>
+        <ul>
+          {this.state.items.map(i => {
+            return(
+              <Items name={i.name} price={i.price}></Items>
+            )
+          })}
+        </ul>
        </div>
     );
   }
 }
 
-export default App;
+export default App
