@@ -1,38 +1,5 @@
 import React from 'react'
 
-class Item extends React.Component {
-  render() {
-    return (
-       <div>
-        <li>
-          {this.props.name}, ${this.props.price}
-        </li>
-       </div>
-    );
-  }
-}
-
-class AddForm extends React.Component {
-  nameRef = React.createRef()
-  priceRef = React.createRef()
-
-add = () => {
-  let name = this.nameRef.current.value
-  let price = this.priceRef.current.value
-  this.props.add(name, price)
-}
-
-  render() {
-    return (
-       <div>
-        <input type="text" ref={this.nameRef}/>
-        <input type="text" ref={this.priceRef}/>
-        <button onClick={this.add}>ADD</button>
-       </div>
-    );
-  }
-}
-
 class Title extends React.Component {
   render() {
     return (
@@ -53,6 +20,50 @@ class Header extends React.Component {
   }
 }
 
+class Item extends React.Component {
+  render() {
+    return (
+       <div>
+        <li>
+          {this.props.name}, ${this.props.price}
+        </li>
+       </div>
+    );
+  }
+}
+
+class AddForm extends React.Component {
+
+  nameRef = React.createRef()
+  priceRef = React.createRef()
+
+  add = () => {
+    let name = this.nameRef.current.value
+    let price = this.priceRef.current.value
+    this.props.add(name, price)
+  }
+
+  render() {
+    return (
+       <div>
+        <input type="text" ref={this.nameRef}/>
+        <input type="number" ref={this.priceRef}/>
+        <button onClick={this.add}>ADD</button>
+       </div>
+    );
+  }
+}
+
+class Author extends React.Component {
+  render() {
+    return (
+       <div>
+        {this.props.children}
+       </div>
+    );
+  }
+}
+
 class App extends React.Component {
 
   state = {
@@ -62,8 +73,7 @@ class App extends React.Component {
   }
 
   add = (name, price) => {
-    let id = this.state.items.length +1
-
+    let id =this.state.items.length +1
     this.setState({
       items:[
         ...this.state.items,
@@ -75,7 +85,10 @@ class App extends React.Component {
   render() {
     return (
        <div>
-        <Header name="My App"/>
+        <Author>
+          <h1 style={{backgroundColor:'black', color:'white'}}>Ye Aung Khant</h1>
+        </Author>
+        <Header name="My React App"/>
         <AddForm add={this.add}/>
         <ul>
           {this.state.items.map(i => {
