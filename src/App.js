@@ -1,4 +1,7 @@
 import React from 'react'
+import Author from './Author'
+import Item from './Item'
+import AddForm from './AddForm';
 
 class Title extends React.Component {
   render() {
@@ -20,49 +23,9 @@ class Header extends React.Component {
   }
 }
 
-class Item extends React.Component {
-  render() {
-    return (
-       <div>
-        <li>
-          {this.props.name}, ${this.props.price}
-        </li>
-       </div>
-    );
-  }
-}
 
-class AddForm extends React.Component {
 
-  nameRef = React.createRef()
-  priceRef = React.createRef()
 
-  add = () => {
-    let name = this.nameRef.current.value
-    let price = this.priceRef.current.value
-    this.props.add(name, price)
-  }
-
-  render() {
-    return (
-       <div>
-        <input type="text" ref={this.nameRef}/>
-        <input type="number" ref={this.priceRef}/>
-        <button onClick={this.add}>ADD</button>
-       </div>
-    );
-  }
-}
-
-class Author extends React.Component {
-  render() {
-    return (
-       <div>
-        {this.props.children}
-       </div>
-    );
-  }
-}
 
 class App extends React.Component {
 
