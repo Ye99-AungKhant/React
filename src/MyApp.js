@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // const MyContext = React.createContext();
 
@@ -42,26 +42,38 @@ const MyContext = React.createContext("Hello React Context")
 
 //functional component in context
 
-class MyApp extends React.Component {
-    render() {
-        return <Navbar/>
-    }
-}
+// class MyApp extends React.Component {
+//     render() {
+//         return <Navbar/>
+//     }
+// }
 
-class Navbar extends React.Component {
-    render() {
-        return <Brand/>
-    }
-}
+// class Navbar extends React.Component {
+//     render() {
+//         return <Brand/>
+//     }
+// }
 
-class Brand extends React.Component {
-    static contextType = MyContext
+// class Brand extends React.Component {
+//     static contextType = MyContext
 
-    render() {
-        return(
-            <h1>{this.context}</h1>
-        )
-    }
+//     render() {
+//         return(
+//             <h1>{this.context}</h1>
+//         )
+//     }
+// }
+
+//useEffect
+
+const MyApp = props => {
+    useEffect(() => {
+        const btn = document.getElementById('click')
+        btn.addEventListener('click', () => {
+            console.log('Hello react');
+        })
+    })
+     return <button id="click">Click</button>
 }
 
 export default MyApp
