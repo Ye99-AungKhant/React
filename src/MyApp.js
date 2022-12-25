@@ -27,17 +27,41 @@ import React from 'react'
 
 const MyContext = React.createContext("Hello React Context")
 
-const MyApp = props => {
-    return <Navbar/>
+// const MyApp = props => {
+//     return <Navbar/>
+// }
+
+// const Navbar = props => {
+//     return <Brand/>
+// }
+
+// const Brand = props => {
+//     let value = React.useContext(MyContext)
+//     return <h1>{value}</h1>
+// }
+
+//functional component in context
+
+class MyApp extends React.Component {
+    render() {
+        return <Navbar/>
+    }
 }
 
-const Navbar = props => {
-    return <Brand/>
+class Navbar extends React.Component {
+    render() {
+        return <Brand/>
+    }
 }
 
-const Brand = props => {
-    let value = React.useContext(MyContext)
-    return <h1>{value}</h1>
+class Brand extends React.Component {
+    static contextType = MyContext
+
+    render() {
+        return(
+            <h1>{this.context}</h1>
+        )
+    }
 }
 
 export default MyApp
