@@ -4,33 +4,32 @@ import User from './User'
 const App = (props) => {
 
   let nameRef = createRef()
-  let ageRef = createRef()
+  let descRef = createRef()
 
   let [users, setUsers] = React.useState([
-    {id:1, name:"Ko Ye", age:23}
+    {id:1, name:"Ko Ye", desc:"Ayan chit that"}
   ])
 
-  let plus = () => {
-    let id = users.length + 1
+  let create = () => {
     let name = nameRef.current.value
-    let age = ageRef.current.value
-    
+    let desc = descRef.current.value
+    let id = users.length +1 
     setUsers([
       ...users,
-      {id, name, age}
+      {id, name, desc}
     ])
   }
 
   return (
     <div>
       <input type="text" ref={nameRef}/>
-      <input type="number" ref={ageRef}/>
-      <button onClick={plus}>Plus</button>
+      <input type="text" ref={descRef}/>
+      <button onClick={create}>Create</button>
       <ul>
-        {users.map(u => <User key={u.id} name={u.name} age={u.age}/>)}
+        {users.map(u => <User key={u.id} name={u.name} desc={u.desc}/>)}
       </ul>
     </div>
   )
 }
 
-export default App
+export default  App
