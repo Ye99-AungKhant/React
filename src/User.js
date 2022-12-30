@@ -1,9 +1,9 @@
 import React from 'react'
 
-const User = ({name, desc}) => {
+const User = ({name, age}) => {
     return (
         <li>
-            {name}, {desc}
+            {name}, {age}
         </li>
     )
 }
